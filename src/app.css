@@ -5,3 +5,7 @@
 input:disabled {
     @apply cursor-not-allowed bg-gray-200;
 }
+
+input {
+    @apply transition-all;
+}
