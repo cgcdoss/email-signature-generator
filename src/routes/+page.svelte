@@ -132,11 +132,19 @@
         class="result flex flex-col flex-1 col-span-7 sm:h-full bg-gray-300 items-center justify-center py-8"
     >
         <div
-            class="fake-email w-11/12 sm:w-1/2 sm:h-1/2 bg-white shadow-md p-2"
+            class="fake-email w-11/12 sm:w-1/2 sm:h-1/2 bg-white shadow-lg p-2"
         >
-            <h2 class="bg-gray-200 text-gray-500 pl-2 p-3 -m-2 mb-3 font-bold">
-                Pré-visualização da assinatura
-            </h2>
+            <div class="bg-gray-200 pl-2 p-2 -m-2 mb-3 flex items-center">
+                <div class="flex gap-2">
+                    <div class="rounded-full bg-red-500 h-3 w-3"></div>
+                    <div class="rounded-full bg-yellow-500 h-3 w-3"></div>
+                    <div class="rounded-full bg-green-500 h-3 w-3"></div>
+                </div>
+                <h2 class="text-gray-500 font-bold text-center flex-1">
+                    Pré-visualização da assinatura
+                </h2>
+            </div>
+
             <p class="border-b my-2 text-gray-400">Para</p>
             <p class="border-b text-gray-400">Assunto</p>
 
