@@ -1,8 +1,8 @@
 <script lang="ts">
+    import { base } from "$app/paths";
     import FakeContent from "$lib/components/FakeContent.svelte";
     import InputFloatingLabel from "$lib/components/InputFloatingLabel.svelte";
     import { getLowerQualityImg } from "$lib/utils";
-    import { fly } from "svelte/transition";
 
     let img = "";
     let imgFile: string;
@@ -10,6 +10,10 @@
     let cargo = "";
     let empresa = "";
     let telefone = "";
+    let redesSociais = {
+        linkedin: "",
+        instagram: "",
+    };
 
     // TODO: substituir uso do execCommand('copy')
     function copyAll() {
@@ -68,10 +72,10 @@
 </header>
 
 <main
-    class="flex flex-col sm:grid grid-cols-1 sm:grid-cols-10 min-h-[calc(100vh-64px)]"
+    class="flex flex-col sm:grid grid-cols-1 sm:grid-cols-10 h-[calc(100vh-64px)]"
 >
     <section
-        class="form flex flex-col gap-2 col-span-3 px-4 py-8 sm:h-full shadow-md"
+        class="form flex flex-col gap-2 col-span-3 px-4 py-8 sm:max-h-full sm:overflow-auto shadow-md"
     >
         <h2 class="text-xl">
             Preencha as informações abaixo e depois clique em Copiar assinatura
@@ -83,7 +87,7 @@
 
         <div class="p-2 px-4 bg-gray-200 -mx-4 mb-2">Geral</div>
 
-        <InputFloatingLabel label="Nome" bind:value={name} />
+        <InputFloatingLabel label="Nome *" bind:value={name} />
         <InputFloatingLabel label="Cargo" bind:value={cargo} />
         <InputFloatingLabel label="Empresa" bind:value={empresa} />
         <InputFloatingLabel label="Telefone" bind:value={telefone} />
@@ -112,19 +116,20 @@
             {/if}
         </div>
 
-        {#if name}
-            <button
-                class="bg-slate-600 text-white hover:bg-slate-700 p-4 transition-colors"
-                on:click={copyAll}
-                transition:fly={{ y: -50 }}
-            >
-                Copiar assinatura
-            </button>
-        {/if}
+        <div class="p-2 px-4 bg-gray-200 -mx-4 my-2">Redes sociais</div>
+
+        <InputFloatingLabel
+            label="LinkedIn"
+            bind:value={redesSociais.linkedin}
+        />
+        <InputFloatingLabel
+            label="Instagram"
+            bind:value={redesSociais.instagram}
+        />
     </section>
 
     <section
-        class="result flex flex-1 col-span-7 sm:h-full bg-gray-300 items-center justify-center py-8"
+        class="result flex flex-col flex-1 col-span-7 sm:h-full bg-gray-300 items-center justify-center py-8"
     >
         <div
             class="fake-email w-11/12 sm:w-1/2 sm:h-1/2 bg-white shadow-md p-2"
@@ -144,7 +149,7 @@
                     <tbody>
                         <tr>
                             {#if img || imgFile}
-                                <td>
+                                <td class="align-top">
                                     <div>
                                         <img
                                             src={img || imgFile}
@@ -169,11 +174,42 @@
                                 {#if telefone}
                                     <p>{telefone}</p>
                                 {/if}
+
+                                <div class="flex gap-1 mt-1">
+                                    {#if redesSociais.linkedin}
+                                        <a href={redesSociais.linkedin}>
+                                            <img
+                                                src="{base}/linkedin.png"
+                                                alt="Linkedin"
+                                                width="16"
+                                                height="16"
+                                            />
+                                        </a>
+                                    {/if}
+                                    {#if redesSociais.instagram}
+                                        <a href={redesSociais.instagram}>
+                                            <img
+                                                src="{base}/instagram.png"
+                                                alt="Instagram"
+                                                width="16"
+                                                height="16"
+                                            />
+                                        </a>
+                                    {/if}
+                                </div>
                             </td>
                         </tr>
                     </tbody>
                 </table>
             </div>
         </div>
+
+        <button
+            class="bg-slate-600 text-white hover:bg-slate-700 p-4 transition-all w-[200px] mt-4"
+            class:opacity-0={!name}
+            on:click={copyAll}
+        >
+            Copiar assinatura
+        </button>
     </section>
 </main>
