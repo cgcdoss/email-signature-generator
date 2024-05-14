@@ -149,8 +149,8 @@
                                         <img
                                             src={img || imgFile}
                                             alt="logo assinatura"
-                                            width="150"
-                                            height="150"
+                                            width="100"
+                                            height="100"
                                         />
                                     </div>
                                 </td>
