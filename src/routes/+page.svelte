@@ -2,6 +2,7 @@
     import FakeContent from "$lib/components/FakeContent.svelte";
     import InputFloatingLabel from "$lib/components/InputFloatingLabel.svelte";
     import { getLowerQualityImg } from "$lib/utils";
+    import { fly } from "svelte/transition";
 
     let img = "";
     let imgFile: string;
@@ -102,7 +103,10 @@
                 disabled={!!img}
             />
             {#if imgFile}
-                <button class="bg-slate-300 p-1" on:click={cleanImgFile}>
+                <button
+                    class="bg-slate-300 p-1 hover:bg-slate-400 transition-colors"
+                    on:click={cleanImgFile}
+                >
                     Limpar
                 </button>
             {/if}
@@ -112,6 +116,7 @@
             <button
                 class="bg-slate-600 text-white hover:bg-slate-700 p-4 transition-colors"
                 on:click={copyAll}
+                transition:fly={{ y: -50 }}
             >
                 Copiar assinatura
             </button>
