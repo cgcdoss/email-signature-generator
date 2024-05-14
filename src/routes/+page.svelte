@@ -1,5 +1,6 @@
 <script lang="ts">
     import FakeContent from "$lib/components/FakeContent.svelte";
+    import InputFloatingLabel from "$lib/components/InputFloatingLabel.svelte";
     import { getLowerQualityImg } from "$lib/utils";
 
     let img = "";
@@ -81,16 +82,16 @@
 
         <div class="p-2 px-4 bg-gray-200 -mx-4 mb-2">Geral</div>
 
-        <input type="text" placeholder="Nome" bind:value={name} />
-        <input type="text" placeholder="Cargo" bind:value={cargo} />
-        <input type="text" placeholder="Empresa" bind:value={empresa} />
-        <input type="text" placeholder="Telefone" bind:value={telefone} />
+        <InputFloatingLabel label="Nome" bind:value={name} />
+        <InputFloatingLabel label="Cargo" bind:value={cargo} />
+        <InputFloatingLabel label="Empresa" bind:value={empresa} />
+        <InputFloatingLabel label="Telefone" bind:value={telefone} />
+
         <div class="flex max-sm:flex-col sm:items-center max-sm:mb-3 gap-2">
-            <input
-                type="text"
-                placeholder="URL da imagem/Ctrl + V"
-                on:paste={handleOnPast}
+            <InputFloatingLabel
+                label="URL da imagem/Ctrl + V"
                 bind:value={img}
+                on:paste={handleOnPast}
                 disabled={!!imgFile}
             />
             <p class="text-center">ou</p>
