@@ -56,7 +56,7 @@
 
     function cleanImgFile() {
         const input = document.querySelector(
-            'input[type="file"]'
+            'input[type="file"]',
         ) as HTMLInputElement;
         input.value = "";
         imgFile = "";
@@ -75,7 +75,7 @@
     class="flex flex-col sm:grid grid-cols-1 sm:grid-cols-10 h-[calc(100vh-64px)]"
 >
     <section
-        class="form flex flex-col gap-2 col-span-3 px-4 py-8 sm:max-h-full sm:overflow-auto shadow-md"
+        class="form flex flex-col gap-2 col-span-4 2xl:col-span-3 px-4 py-8 sm:max-h-full sm:overflow-auto shadow-md"
     >
         <h2 class="text-xl">
             Preencha as informações abaixo e depois clique em Copiar assinatura
@@ -92,7 +92,7 @@
         <InputFloatingLabel label="Empresa" bind:value={empresa} />
         <InputFloatingLabel label="Telefone" bind:value={telefone} />
 
-        <div class="flex max-sm:flex-col sm:items-center max-sm:mb-3 gap-2">
+        <div class="flex max-2xl:flex-col 2xl:items-center max-2xl:mb-3 gap-2">
             <InputFloatingLabel
                 label="URL da imagem/Ctrl + V"
                 bind:value={img}
@@ -129,10 +129,10 @@
     </section>
 
     <section
-        class="result flex flex-col flex-1 col-span-7 sm:h-full bg-gray-300 items-center justify-center py-8"
+        class="result flex flex-col flex-1 col-span-6 2xl:col-span-7 sm:h-full bg-gray-300 items-center justify-center py-8 sm:overflow-auto"
     >
         <div
-            class="fake-email w-11/12 sm:w-1/2 sm:h-1/2 bg-white shadow-lg p-2"
+            class="fake-email min-w-[90%] sm:min-w-[50%] bg-white shadow-lg p-2 transition-all"
         >
             <div class="bg-gray-200 pl-2 p-2 -m-2 mb-3 flex items-center">
                 <div class="flex gap-2">
@@ -215,6 +215,7 @@
         <button
             class="bg-slate-600 text-white hover:bg-slate-700 p-4 transition-all w-[200px] mt-4"
             class:opacity-0={!name}
+            class:pointer-events-none={!name}
             on:click={copyAll}
         >
             Copiar assinatura
