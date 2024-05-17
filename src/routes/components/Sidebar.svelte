@@ -1,6 +1,6 @@
 <script lang="ts">
     import InputFloatingLabel from "$lib/components/InputFloatingLabel.svelte";
-    import { informacoes } from "$lib/store";
+    import { informacoes as infos } from "$lib/store";
     import { getLowerQualityImg } from "$lib/utils";
 
     function handleFileInputChange(event: any) {
@@ -10,7 +10,7 @@
             reader.onload = (e) => {
                 const img = new Image();
                 img.onload = () => {
-                    $informacoes.imgFile = getLowerQualityImg(img);
+                    $infos.imgFile = getLowerQualityImg(img);
                 };
                 img.src = e.target!.result as string;
             };
@@ -23,7 +23,7 @@
         reader.onload = (e) => {
             const img = new Image();
             img.onload = () => {
-                $informacoes.imgFile = getLowerQualityImg(img);
+                $infos.imgFile = getLowerQualityImg(img);
             };
             img.src = e.target!.result as string;
         };
@@ -35,7 +35,7 @@
             'input[type="file"]'
         ) as HTMLInputElement;
         input.value = "";
-        $informacoes.imgFile = "";
+        $infos.imgFile = "";
     }
 </script>
 
@@ -51,26 +51,26 @@
 
     <div class="p-2 px-4 bg-gray-200 -mx-4 mb-2">Geral</div>
 
-    <InputFloatingLabel label="Nome *" bind:value={$informacoes.name} />
-    <InputFloatingLabel label="Cargo" bind:value={$informacoes.cargo} />
-    <InputFloatingLabel label="Empresa" bind:value={$informacoes.empresa} />
-    <InputFloatingLabel label="Telefone" bind:value={$informacoes.telefone} />
+    <InputFloatingLabel label="Nome *" bind:value={$infos.name} />
+    <InputFloatingLabel label="Cargo" bind:value={$infos.cargo} />
+    <InputFloatingLabel label="Empresa" bind:value={$infos.empresa} />
+    <InputFloatingLabel label="Telefone" bind:value={$infos.telefone} />
 
     <div class="flex max-2xl:flex-col 2xl:items-center max-2xl:mb-3 gap-2">
         <InputFloatingLabel
             label="URL da imagem/Ctrl + V"
-            bind:value={$informacoes.img}
+            bind:value={$infos.img}
             on:paste={handleOnPast}
-            disabled={!!$informacoes.imgFile}
+            disabled={!!$infos.imgFile}
         />
         <p class="text-center">ou</p>
         <input
             type="file"
             accept="image/*"
             on:change={handleFileInputChange}
-            disabled={!!$informacoes.img}
+            disabled={!!$infos.img}
         />
-        {#if $informacoes.imgFile}
+        {#if $infos.imgFile}
             <button
                 class="bg-slate-300 p-1 hover:bg-slate-400 transition-colors"
                 on:click={cleanImgFile}
@@ -84,10 +84,10 @@
 
     <InputFloatingLabel
         label="LinkedIn"
-        bind:value={$informacoes.redesSociais.linkedin}
+        bind:value={$infos.redesSociais.linkedin}
     />
     <InputFloatingLabel
         label="Instagram"
-        bind:value={$informacoes.redesSociais.instagram}
+        bind:value={$infos.redesSociais.instagram}
     />
 </section>
