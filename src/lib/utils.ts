@@ -1,4 +1,4 @@
-export function getLowerQualityImg(img: HTMLImageElement) {
+export function getLowerQualityImg(img: HTMLImageElement, quality = 30) {
     const canvas = document.createElement('canvas');
     const ctx = canvas.getContext('2d');
 
@@ -23,5 +23,5 @@ export function getLowerQualityImg(img: HTMLImageElement) {
     ctx!.drawImage(img, 0, 0, width, height);
 
     // Diminuir a qualidade da imagem
-    return canvas.toDataURL('image/jpeg', 0.7); // Qualidade 70%
+    return canvas.toDataURL('image/jpeg', quality / 100);
 }
