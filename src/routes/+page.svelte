@@ -7,7 +7,7 @@
     <title>Gerar assintatura de e-mail (sem cadastro)</title>
 </svelte:head>
 
-<header class="p-4 bg-gray-600">
+<header class="p-4 bg-primary-500">
     <h1 class="text-2xl text-white">Gerar Assinatura de E-mail</h1>
 </header>
 

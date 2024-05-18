@@ -20,7 +20,7 @@
 </script>
 
 <section
-    class="result flex flex-col flex-1 col-span-6 2xl:col-span-7 sm:h-full bg-gray-300 items-center justify-center py-8 sm:overflow-auto"
+    class="result flex flex-col flex-1 col-span-6 2xl:col-span-7 sm:h-full gradient items-center justify-center py-8 sm:overflow-auto"
 >
     <div
         class="fake-email min-w-[90%] sm:min-w-[50%] min-h-[50%] bg-white shadow-lg p-2 transition-all"
@@ -101,7 +101,7 @@
     </div>
 
     <button
-        class="bg-slate-600 text-white hover:bg-slate-700 p-4 transition-all w-[200px] mt-4"
+        class="bg-primary-600/80 text-white hover:bg-primary-800 p-4 transition-all w-[200px] mt-4"
         class:opacity-0={!name}
         class:pointer-events-none={!name}
         on:click={copyAll}
@@ -109,3 +109,14 @@
         Copiar assinatura
     </button>
 </section>
+
+<style>
+    .gradient {
+        @apply from-primary-300/70 to-primary-400;
+        background-image: linear-gradient(
+            320deg,
+            var(--tw-gradient-from) 0%,
+            var(--tw-gradient-to) 80%
+        );
+    }
+</style>

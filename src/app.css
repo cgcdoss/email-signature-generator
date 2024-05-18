@@ -9,3 +9,7 @@ input:disabled {
 input {
     @apply transition-all;
 }
+
+input[type='text']:focus {
+    @apply focus:ring-primary-600 focus:border-primary-600;
+}
