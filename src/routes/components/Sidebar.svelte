@@ -49,7 +49,7 @@
         Depois basta colar (Ctrl + V) no campo de texto do seu serviço de e-mail
     </p>
 
-    <div class="divider p-2 px-4 -mx-4 mb-2">Geral</div>
+    <div class="divider mb-2">Geral</div>
 
     <InputFloatingLabel label="Nome *" bind:value={$infos.name} />
     <InputFloatingLabel label="Cargo" bind:value={$infos.cargo} />
@@ -80,7 +80,7 @@
         {/if}
     </div>
 
-    <div class="divider p-2 px-4 -mx-4 my-2">Redes sociais</div>
+    <div class="divider my-2">Redes sociais</div>
 
     <InputFloatingLabel
         label="LinkedIn"
@@ -94,6 +94,6 @@
 
 <style>
     .divider {
-        @apply bg-primary-100;
+        @apply bg-primary-100 text-primary-600 font-bold p-2 px-4 -mx-4;
     }
 </style>
