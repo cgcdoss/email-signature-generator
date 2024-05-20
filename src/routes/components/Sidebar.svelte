@@ -54,7 +54,11 @@
     <InputFloatingLabel label="Nome *" bind:value={$infos.name} />
     <InputFloatingLabel label="Cargo" bind:value={$infos.cargo} />
     <InputFloatingLabel label="Empresa" bind:value={$infos.empresa} />
-    <InputFloatingLabel label="Telefone" bind:value={$infos.telefone} />
+    <InputFloatingLabel
+        label="Telefone"
+        bind:value={$infos.telefone}
+        mask="(00) 00000-0000"
+    />
 
     <div class="flex max-2xl:flex-col 2xl:items-center max-2xl:mb-3 gap-2">
         <InputFloatingLabel

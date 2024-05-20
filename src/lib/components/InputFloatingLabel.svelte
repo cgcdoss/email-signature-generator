@@ -1,7 +1,11 @@
 <script lang="ts">
+    import { imask } from "@imask/svelte";
+
     export let label: string;
     export let value: string;
     export let disabled = false;
+
+    export let mask: string | undefined = undefined;
 </script>
 
 <div class="relative">
@@ -13,6 +17,9 @@
         bind:value
         on:paste
         {disabled}
+        use:imask={mask && {
+            mask,
+        }}
     />
     <label
         for={"floating_filled_" + label}

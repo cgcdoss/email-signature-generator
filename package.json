@@ -13,6 +13,7 @@
 		"deploy": "npx -y gh-pages -d build --nojekyll"
 	},
 	"devDependencies": {
+		"@imask/svelte": "^7.6.0",
 		"@sveltejs/adapter-auto": "^3.0.0",
 		"@sveltejs/adapter-static": "^3.0.1",
 		"@sveltejs/kit": "^2.0.0",
