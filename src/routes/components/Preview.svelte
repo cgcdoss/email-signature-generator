@@ -23,7 +23,7 @@
     class="result flex flex-col flex-1 col-span-6 2xl:col-span-7 sm:h-full gradient items-center justify-center py-8 sm:overflow-auto"
 >
     <div
-        class="fake-email min-w-[90%] sm:min-w-[50%] min-h-[50%] bg-white shadow-lg p-2 transition-all"
+        class="fake-email min-w-[90%] sm:min-w-[55%] min-h-[55%] bg-white shadow-lg p-2 transition-all"
     >
         <div class="bg-gray-200 pl-2 p-2 -m-2 mb-3 flex items-center">
             <div class="flex gap-2">
