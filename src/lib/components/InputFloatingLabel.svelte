@@ -4,6 +4,17 @@
     export let label: string;
     export let value: string;
     export let disabled = false;
+    export let inputmode:
+        | "text"
+        | "search"
+        | "none"
+        | "tel"
+        | "url"
+        | "email"
+        | "numeric"
+        | "decimal"
+        | null
+        | undefined = "text";
 
     export let mask: string | undefined = undefined;
 </script>
@@ -11,6 +22,7 @@
 <div class="relative">
     <input
         type="text"
+        {inputmode}
         id={"floating_filled_" + label}
         class="block pt-4 w-full text-gray-900 focus:outline-none peer"
         placeholder=" "

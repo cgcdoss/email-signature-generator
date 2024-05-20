@@ -58,6 +58,7 @@
         label="Telefone"
         bind:value={$infos.telefone}
         mask="(00) 00000-0000"
+        inputmode="numeric"
     />
 
     <div class="flex max-2xl:flex-col 2xl:items-center max-2xl:mb-3 gap-2">
