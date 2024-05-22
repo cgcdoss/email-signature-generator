@@ -20,14 +20,12 @@
     <tbody>
         <tr>
             {#if img || imgFile}
-                <td class="align-top">
+                <td class="align-top min-w-[80px]">
                     <div>
                         <img
                             src={img || imgFile}
                             alt="logo assinatura"
                             class="rounded-full object-cover w-20 h-20"
-                            width="100"
-                            height="100"
                         />
                     </div>
                 </td>
