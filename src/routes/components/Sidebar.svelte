@@ -1,7 +1,31 @@
 <script lang="ts">
     import InputFloatingLabel from "$lib/components/InputFloatingLabel.svelte";
-    import { informacoes as infos } from "$lib/store";
+    import Check from "$lib/icons/check.svelte";
+    import { currentTemplate, informacoes as infos } from "$lib/store";
     import { getLowerQualityImg } from "$lib/utils";
+    import { onMount } from "svelte";
+    import Template1 from "./templates/Template1.svelte";
+    import Template2 from "./templates/Template2.svelte";
+
+    let isMobile = window.matchMedia("(max-width: 768px)").matches;
+    let templates: { name: string; component: any }[] = [
+        {
+            name: "Modelo 1",
+            component: Template1,
+        },
+        {
+            name: "Modelo 2",
+            component: Template2,
+        },
+    ];
+
+    onMount(() => {
+        window
+            .matchMedia("(max-width: 768px)")
+            .addEventListener("change", (ev) => {
+                isMobile = ev.matches;
+            });
+    });
 
     function handleFileInputChange(event: any) {
         const file = event.target.files[0];
@@ -77,7 +101,7 @@
         />
         {#if $infos.imgFile}
             <button
-                class="bg-primary-600 p-1 hover:bg-primary-700 transition-colors"
+                class="bg-primary-500 p-1 hover:bg-primary-600 transition-colors"
                 on:click={cleanImgFile}
             >
                 Limpar
@@ -95,10 +119,35 @@
         label="Instagram"
         bind:value={$infos.redesSociais.instagram}
     />
+
+    <div class="divider my-2">Modelos</div>
+
+    <div class="grid grid-cols-1 gap-2">
+        {#each templates as template}
+            <button
+                class="bg-primary-500 hover:bg-primary-600 py-3 transition-all flex gap-2 justify-center items-center"
+                class:selected={template.component === $currentTemplate}
+                on:click={() => {
+                    currentTemplate.set(template.component);
+                }}
+            >
+                <div class="min-w-4">
+                    {#if template.component === $currentTemplate}
+                        <Check />
+                    {/if}
+                </div>
+                {template.name}
+            </button>
+        {/each}
+    </div>
 </section>
 
 <style>
     .divider {
         @apply from-primary-600 to-primary-400 bg-gradient-to-r text-white font-bold p-2 px-4 -mx-4;
+    }
+
+    button.selected {
+        @apply bg-primary-500/50 hover:bg-primary-600;
     }
 </style>

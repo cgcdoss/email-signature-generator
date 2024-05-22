@@ -1,7 +1,7 @@
 <script lang="ts">
-    import { base } from "$app/paths";
     import FakeContent from "$lib/components/FakeContent.svelte";
-    import { informacoes } from "$lib/store";
+    import { currentTemplate, informacoes } from "$lib/store";
+    import Template2 from "./templates/Template2.svelte";
 
     $: ({ img, imgFile, name, cargo, empresa, telefone, redesSociais } =
         $informacoes);
@@ -44,59 +44,7 @@
         <p class="my-4">Atenciosamente,</p>
 
         <div id="signature">
-            <table>
-                <tbody>
-                    <tr>
-                        {#if img || imgFile}
-                            <td class="align-top">
-                                <div>
-                                    <img
-                                        src={img || imgFile}
-                                        alt="logo assinatura"
-                                        width="100"
-                                        height="100"
-                                    />
-                                </div>
-                            </td>
-                        {/if}
-                        <td class="align-top pl-2" class:pl-2={img || imgFile}>
-                            <h2 class="text-xl font-bold">{name}</h2>
-                            {#if cargo || (cargo && empresa)}
-                                <h3 class="text-lg">
-                                    {cargo}
-                                    {#if empresa}em {empresa}{/if}
-                                </h3>
-                            {/if}
-                            {#if telefone}
-                                <p>{telefone}</p>
-                            {/if}
-
-                            <div class="flex gap-1 mt-1">
-                                {#if redesSociais.linkedin}
-                                    <a href={redesSociais.linkedin}>
-                                        <img
-                                            src="{base}/linkedin.png"
-                                            alt="Linkedin"
-                                            width="16"
-                                            height="16"
-                                        />
-                                    </a>
-                                {/if}
-                                {#if redesSociais.instagram}
-                                    <a href={redesSociais.instagram}>
-                                        <img
-                                            src="{base}/instagram.png"
-                                            alt="Instagram"
-                                            width="16"
-                                            height="16"
-                                        />
-                                    </a>
-                                {/if}
-                            </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+            <svelte:component this={$currentTemplate} />
         </div>
     </div>
 
@@ -112,7 +60,7 @@
 
 <style>
     .gradient {
-        @apply from-primary-400 to-primary-200 bg-gradient-to-r; 
+        @apply from-primary-400 to-primary-200 bg-gradient-to-r;
         background-image: linear-gradient(
             to right,
             var(--tw-gradient-from) 0%,

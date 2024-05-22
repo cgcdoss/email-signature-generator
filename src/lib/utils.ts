@@ -1,4 +1,4 @@
-export function getLowerQualityImg(img: HTMLImageElement, quality = 30) {
+export function getLowerQualityImg(img: HTMLImageElement, quality = 15) {
     const canvas = document.createElement('canvas');
     const ctx = canvas.getContext('2d');
 

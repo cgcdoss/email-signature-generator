@@ -1,4 +1,6 @@
 import { writable } from "svelte/store";
+import Template1 from "../routes/components/templates/Template1.svelte";
+import type { ComponentType } from "svelte";
 
 export const informacoes = writable({
   img: "",
@@ -12,3 +14,4 @@ export const informacoes = writable({
     instagram: "",
   },
 });
+export const currentTemplate = writable<ComponentType>(Template1);
