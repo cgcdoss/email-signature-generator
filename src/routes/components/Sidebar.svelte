@@ -40,7 +40,7 @@
 </script>
 
 <section
-    class="form flex flex-col gap-2 col-span-4 2xl:col-span-3 px-4 py-8 sm:max-h-full sm:overflow-auto shadow-md"
+    class="form flex flex-col gap-3 col-span-4 2xl:col-span-3 px-4 py-8 sm:max-h-full sm:overflow-auto shadow-md bg-primary-800 text-primary-100"
 >
     <h2 class="text-xl">
         Preencha as informações abaixo e depois clique em Copiar assinatura
@@ -77,7 +77,7 @@
         />
         {#if $infos.imgFile}
             <button
-                class="bg-slate-300 p-1 hover:bg-slate-400 transition-colors"
+                class="bg-primary-600 p-1 hover:bg-primary-700 transition-colors"
                 on:click={cleanImgFile}
             >
                 Limpar
@@ -99,6 +99,6 @@
 
 <style>
     .divider {
-        @apply bg-primary-100 text-primary-600 font-bold p-2 px-4 -mx-4;
+        @apply from-primary-600 to-primary-400 bg-gradient-to-r text-white font-bold p-2 px-4 -mx-4;
     }
 </style>

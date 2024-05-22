@@ -112,11 +112,11 @@
 
 <style>
     .gradient {
-        @apply from-primary-300/70 to-primary-400;
+        @apply from-primary-400 to-primary-200 bg-gradient-to-r; 
         background-image: linear-gradient(
-            320deg,
+            to right,
             var(--tw-gradient-from) 0%,
-            var(--tw-gradient-to) 80%
+            var(--tw-gradient-to) 90%
         );
     }
 </style>

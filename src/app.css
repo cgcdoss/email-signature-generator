@@ -3,13 +3,17 @@
 @tailwind utilities;
 
 input:disabled {
-    @apply cursor-not-allowed bg-gray-200;
+    @apply cursor-not-allowed opacity-60;
 }
 
-input {
-    @apply transition-all;
+input:disabled+label {
+    @apply opacity-60;
+}
+
+input[type="text"] {
+    @apply transition-all rounded-md;
 }
 
 input[type='text']:focus {
-    @apply focus:ring-primary-600 focus:border-primary-600;
+    @apply focus:ring-primary-400 focus:border-primary-400;
 }
