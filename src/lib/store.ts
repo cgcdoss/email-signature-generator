@@ -9,6 +9,7 @@ export const informacoes = writable({
   cargo: "",
   empresa: "",
   telefone: "",
+  endereco: '',
   redesSociais: {
     linkedin: "",
     instagram: "",
@@ -22,8 +23,9 @@ export const fakeInfos = readable({
     "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Placeholder_view_vector.svg/310px-Placeholder_view_vector.svg.png",
   empresa: '',
   imgFile: '',
-  cargo: "Programador",
+  cargo: "Diretor de Recursos Humanos",
   telefone: "(91) 99999-9999",
+  endereco: 'Rua Alegre, 123 - Cidade Brasileira',
   redesSociais: {
     instagram: "fake",
     linkedin: "fake",

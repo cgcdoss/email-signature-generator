@@ -84,6 +84,7 @@
         mask="(00) 00000-0000"
         inputmode="numeric"
     />
+    <InputFloatingLabel label="Endereço" bind:value={$infos.endereco} />
 
     <div class="flex max-2xl:flex-col 2xl:items-center max-2xl:mb-3 gap-2">
         <InputFloatingLabel
