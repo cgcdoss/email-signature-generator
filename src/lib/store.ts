@@ -19,8 +19,7 @@ export const currentTemplate = writable<ComponentType>(Template1);
 
 export const fakeInfos = readable({
   name: "Fulano dos Santos",
-  img:
-    "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Placeholder_view_vector.svg/310px-Placeholder_view_vector.svg.png",
+  img: "https://cdn.vectorstock.com/i/500p/08/19/gray-photo-placeholder-icon-design-ui-vector-35850819.jpg",
   empresa: '',
   imgFile: '',
   cargo: "Diretor de Recursos Humanos",
