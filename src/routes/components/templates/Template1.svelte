@@ -1,9 +1,9 @@
 <script lang="ts">
     import { base } from "$app/paths";
-    import { informacoes } from "$lib/store";
+    import { fakeInfos, informacoes } from "$lib/store";
 
     $: ({ img, imgFile, name, cargo, empresa, telefone, redesSociais } =
-        $informacoes);
+        $informacoes.name ? $informacoes : $fakeInfos);
 </script>
 
 <table>

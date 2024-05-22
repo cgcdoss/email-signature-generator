@@ -1,10 +1,8 @@
 <script lang="ts">
     import FakeContent from "$lib/components/FakeContent.svelte";
     import { currentTemplate, informacoes } from "$lib/store";
-    import Template2 from "./templates/Template2.svelte";
 
-    $: ({ img, imgFile, name, cargo, empresa, telefone, redesSociais } =
-        $informacoes);
+    $: ({ name } = $informacoes);
 
     // TODO: substituir uso do execCommand('copy')
     function copyAll() {

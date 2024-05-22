@@ -1,10 +1,10 @@
 <script lang="ts">
     import { base } from "$app/paths";
     import Phone from "$lib/icons/phone.svelte";
-    import { informacoes } from "$lib/store";
+    import { fakeInfos, informacoes } from "$lib/store";
 
     $: ({ img, imgFile, name, cargo, empresa, telefone, redesSociais } =
-        $informacoes);
+        $informacoes.name ? $informacoes : $fakeInfos);
 </script>
 
 <table>
