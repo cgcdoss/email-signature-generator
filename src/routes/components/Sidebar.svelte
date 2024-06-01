@@ -1,4 +1,5 @@
 <script lang="ts">
+    import Accordion from "$lib/components/Accordion.svelte";
     import InputFloatingLabel from "$lib/components/InputFloatingLabel.svelte";
     import Check from "$lib/icons/check.svelte";
     import { currentTemplate, informacoes as infos } from "$lib/store";
@@ -64,7 +65,7 @@
 </script>
 
 <section
-    class="form flex flex-col gap-3 col-span-4 2xl:col-span-3 px-4 py-8 sm:max-h-full sm:overflow-auto shadow-md bg-primary-800 text-primary-100"
+    class="form flex flex-col space-y-3 col-span-4 2xl:col-span-3 px-4 py-8 sm:max-h-full sm:overflow-auto shadow-md bg-primary-800 text-primary-100"
 >
     <h2 class="text-xl">
         Preencha as informações abaixo e depois clique em Copiar assinatura
@@ -73,81 +74,77 @@
         Depois basta colar (Ctrl + V) no campo de texto do seu serviço de e-mail
     </p>
 
-    <div class="divider mb-2">Geral</div>
-
-    <InputFloatingLabel label="Nome *" bind:value={$infos.name} />
-    <InputFloatingLabel label="Cargo" bind:value={$infos.cargo} />
-    <InputFloatingLabel label="Empresa" bind:value={$infos.empresa} />
-    <InputFloatingLabel
-        label="Telefone"
-        bind:value={$infos.telefone}
-        mask="(00) 00000-0000"
-        inputmode="numeric"
-    />
-    <InputFloatingLabel label="Endereço" bind:value={$infos.endereco} />
-
-    <div class="flex max-2xl:flex-col 2xl:items-center max-2xl:mb-3 gap-2">
+    <Accordion title="Geral" open={true}>
+        <InputFloatingLabel label="Nome *" bind:value={$infos.name} />
+        <InputFloatingLabel label="Cargo" bind:value={$infos.cargo} />
+        <InputFloatingLabel label="Empresa" bind:value={$infos.empresa} />
         <InputFloatingLabel
-            label="URL da imagem/Ctrl + V"
-            bind:value={$infos.img}
-            on:paste={handleOnPast}
-            disabled={!!$infos.imgFile}
+            label="Telefone"
+            bind:value={$infos.telefone}
+            mask="(00) 00000-0000"
+            inputmode="numeric"
         />
-        <p class="text-center">ou</p>
-        <input
-            type="file"
-            accept="image/*"
-            on:change={handleFileInputChange}
-            disabled={!!$infos.img}
+        <InputFloatingLabel label="Endereço" bind:value={$infos.endereco} />
+
+        <div class="flex max-2xl:flex-col 2xl:items-center max-2xl:mb-3 gap-2">
+            <InputFloatingLabel
+                label="URL da imagem/Ctrl + V"
+                bind:value={$infos.img}
+                on:paste={handleOnPast}
+                disabled={!!$infos.imgFile}
+            />
+            <p class="text-center">ou</p>
+            <input
+                type="file"
+                accept="image/*"
+                on:change={handleFileInputChange}
+                disabled={!!$infos.img}
+            />
+            {#if $infos.imgFile}
+                <button
+                    class="bg-primary-500 p-1 hover:bg-primary-600 transition-colors"
+                    on:click={cleanImgFile}
+                >
+                    Limpar
+                </button>
+            {/if}
+        </div>
+    </Accordion>
+
+    <Accordion title="Redes sociais" open={true}>
+        <InputFloatingLabel
+            label="LinkedIn"
+            bind:value={$infos.redesSociais.linkedin}
         />
-        {#if $infos.imgFile}
-            <button
-                class="bg-primary-500 p-1 hover:bg-primary-600 transition-colors"
-                on:click={cleanImgFile}
-            >
-                Limpar
-            </button>
-        {/if}
-    </div>
+        <InputFloatingLabel
+            label="Instagram"
+            bind:value={$infos.redesSociais.instagram}
+        />
+    </Accordion>
 
-    <div class="divider my-2">Redes sociais</div>
-
-    <InputFloatingLabel
-        label="LinkedIn"
-        bind:value={$infos.redesSociais.linkedin}
-    />
-    <InputFloatingLabel
-        label="Instagram"
-        bind:value={$infos.redesSociais.instagram}
-    />
-
-    <div class="divider my-2">Modelos</div>
-
-    <div class="grid grid-cols-1 gap-2">
-        {#each templates as template}
-            <button
-                class="bg-primary-500 hover:bg-primary-600 py-3 transition-all flex gap-2 justify-center items-center"
-                class:selected={template.component === $currentTemplate}
-                on:click={() => {
-                    currentTemplate.set(template.component);
-                }}
-            >
-                <div class="min-w-4">
-                    {#if template.component === $currentTemplate}
-                        <Check />
-                    {/if}
-                </div>
-                {template.name}
-            </button>
-        {/each}
-    </div>
+    <Accordion title="Modelos" open={true}>
+        <div class="grid grid-cols-1 gap-2">
+            {#each templates as template}
+                <button
+                    class="bg-primary-500 hover:bg-primary-600 py-3 transition-all flex gap-2 justify-center items-center"
+                    class:selected={template.component === $currentTemplate}
+                    on:click={() => {
+                        currentTemplate.set(template.component);
+                    }}
+                >
+                    <div class="min-w-4">
+                        {#if template.component === $currentTemplate}
+                            <Check />
+                        {/if}
+                    </div>
+                    {template.name}
+                </button>
+            {/each}
+        </div>
+    </Accordion>
 </section>
 
 <style>
-    .divider {
-        @apply from-primary-600 to-primary-400 bg-gradient-to-r text-white font-bold p-2 px-4 -mx-4;
-    }
-
     button.selected {
         @apply bg-primary-500/50 hover:bg-primary-600;
     }
